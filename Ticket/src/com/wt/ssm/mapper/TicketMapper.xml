@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wt.ssm.mapper.TicketMapper">
+	<!-- 查询全部 -->
+	<select id="findAllTicket" resultType="com.wt.ssm.po.Ticket">
+		select * from ticket;
+	</select>
+	<!-- 买票  -->
+	<update id="updateTicketById" parameterType="int">
+		update ticket set sign = 1 where seat = #{seat};
+	</update>
+	<!--清场  -->
+	<update id="updateTicketAll">
+		update ticket set sign = 0;
+	</update>
+	<!-- 分组查询  Limit 第一个参数是起始位(不包括)，第二个参数是查几个-->
+	<select id="findTicketLimit" resultType="com.wt.ssm.po.Ticket">
+		select * from ticket limit #{id1},#{id2};
+	</select>
+</mapper>
